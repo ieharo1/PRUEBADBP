@@ -31,22 +31,23 @@
     function formularioenvio(){
         var elemento = document.getElementById("oracion");
         var array = elemento.value;
-        alert(array);
         var arrayCd = elemento.value.split(" ");
-        alert(arrayCd);
-        alert(arrayCd.length+"es el numero de palabras separadas por el split")
+        alert(arrayCd.length+" es el numero de palabras ingresadas")
         alert("La primera palabra es: "+arrayCd[0]);
-        alert("La ultima palabra es: "+arrayCd[arrayCd.length-1]);
+        alert("La última palabra es: "+arrayCd[arrayCd.length-1]);
         for (let i = 1; i < arrayCd.length+1; i++) {
             var aux = arrayCd[arrayCd.length-i]
             alert("Palabras en orden inverso: " +aux);
         }
-        alert("Ordenamiento"+ arrayCd.sort());
+        for (let i = 0; i < arrayCd.length; i++) {
+            var aux = arrayCd.sort();
+            alert("Palabras en ordenadas de la 'a' a la 'z' "+aux[i])            
+        }
 
         for (let i = 1; i < arrayCd.length+1; i++) {
             var aux = arrayCd.sort();
             var aux2 = aux[aux.length-i]
-            alert("Palabras en orden inverso de la z a la a: " +aux2);
+            alert("Palabras en ordenadas de la 'z' a la 'a': " +aux2);
         }
         var valido = formulario.checkValidity();
         if(valido){
