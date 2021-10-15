@@ -11,43 +11,34 @@
     function iniciar(){
         var boton = document.getElementById("enviar");
         boton.addEventListener("click", formularioenvio);
-        formulario= document.querySelector("form[name='informacion']");
-        formulario.addEventListener("invalid", validacion, true);
-        formulario.addEventListener("input", comprobar);
     }
-    function validacion(evento){
-            var elemento= evento.target;
-            elemento.style.background = "#FFDDDD";
-    }
-    function comprobar(evento){
-            var elemento= evento.target;
-            if(elemento.validity.valid){
-                elemento.style.background="#FFFFFF";
-            }
-            else{
-                elemento.style.background="#FFDDDD";
-            }
-        }
     function formularioenvio(){
         var elemento = document.getElementById("oracion");
         var array = elemento.value;
         var arrayCd = elemento.value.split(" ");
         alert(arrayCd.length+" es el numero de palabras ingresadas")
+        document.writeln("<p>"+ arrayCd.length+" es el numero de palabras ingresadas"+"</p>");
         alert("La primera palabra es: "+arrayCd[0]);
+        document.writeln("<p>"+"La primera palabra es: "+arrayCd[0]+"</p>");
         alert("La última palabra es: "+arrayCd[arrayCd.length-1]);
+        document.writeln("<p>"+"La última palabra es: "+arrayCd[arrayCd.length-1]+"</p>");
         for (let i = 1; i < arrayCd.length+1; i++) {
             var aux = arrayCd[arrayCd.length-i]
             alert("Palabras en orden inverso: " +aux);
+            document.writeln("<p>"+"Palabras en orden inverso: " +aux+"</p>");
         }
+        document.writeln("<p>"+"Palabras en ordenadas de la 'a' a la 'z'"+"</p>");
         for (let i = 0; i < arrayCd.length; i++) {
             var aux = arrayCd.sort();
-            alert("Palabras en ordenadas de la 'a' a la 'z' "+aux[i])            
+            alert("Palabras en ordenadas de la 'a' a la 'z' "+aux[i]);
+            document.writeln("<p>"+aux[i]+"</p>");            
         }
-
+        document.writeln("<p>"+"Palabras en ordenadas de la 'z' a la 'a':"+"</p>");
         for (let i = 1; i < arrayCd.length+1; i++) {
             var aux = arrayCd.sort();
             var aux2 = aux[aux.length-i]
             alert("Palabras en ordenadas de la 'z' a la 'a': " +aux2);
+            document.writeln("<p>"+aux2+"</p>");
         }
         var valido = formulario.checkValidity();
         if(valido){
