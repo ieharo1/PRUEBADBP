@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Prueba Segundo Parcial Isaac Haro]</title>
+</head>
+<script>
+    var formulario;
+    function iniciar(){
+        var boton = document.getElementById("enviar");
+        boton.addEventListener("click", formularioenvio);
+        formulario= document.querySelector("form[name='informacion']");
+        formulario.addEventListener("invalid", validacion, true);
+        formulario.addEventListener("input", comprobar);
+    }
+    function validacion(evento){
+            var elemento= evento.target;
+            elemento.style.background = "#FFDDDD";
+    }
+    function comprobar(evento){
+            var elemento= evento.target;
+            if(elemento.validity.valid){
+                elemento.style.background="#FFFFFF";
+            }
+            else{
+                elemento.style.background="#FFDDDD";
+            }
+        }
+    function formularioenvio(){
+        var elemento = document.getElementById("oracion");
+        var array = elemento.value;
+        alert(array);
+        var arrayCd = elemento.value.split(" ");
+        alert(arrayCd);
+        alert(arrayCd.length+"es el numero de palabras separadas por el split")
+        alert("La primera palabra es: "+arrayCd[0]);
+        alert("La ultima palabra es: "+arrayCd[arrayCd.length-1]);
+        for (let i = 1; i < arrayCd.length+1; i++) {
+            var aux = arrayCd[arrayCd.length-i]
+            alert("Palabras en orden inverso: " +aux);
+        }
+        alert("Ordenamiento"+ arrayCd.sort());
+
+        for (let i = 1; i < arrayCd.length+1; i++) {
+            var aux = arrayCd.sort();
+            var aux2 = aux[aux.length-i]
+            alert("Palabras en orden inverso de la z a la a: " +aux2);
+        }
+        var valido = formulario.checkValidity();
+        if(valido){
+            formulario.submit();
+        }
+        else if(elemento.validity.patternMismatch || elemento.validity.valueMissing){
+            alert('no ingreso');
+        }
+
+    }
+    window.addEventListener("load", iniciar);
+</script>
+<body>
+    <section>
+        <form name="array">
+            <p>
+                <label>Ingrese la oración:
+                    <input name="oracion"id="oracion">
+                </label>
+            </p>
+            <p>
+                <button type="button" id="enviar">
+                    Ingresar
+                </button>
+            </p>
+        </form>
+    </section>
+</body>
+</html>
